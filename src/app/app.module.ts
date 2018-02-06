@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 
 import { AppComponent } from './app.component';
 import {appRouterComponents, AppRoutingModule} from "./app.routing.module";
+import {TasksModule} from "./tasks/tasks.module";
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import {appRouterComponents, AppRoutingModule} from "./app.routing.module";
   ],
   imports: [
     BrowserModule,
+    TasksModule,
     AppRoutingModule
   ],
   providers: [],
