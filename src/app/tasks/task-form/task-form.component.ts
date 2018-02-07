@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params} from "@angular/router";
+
+import {switchMap} from 'rxjs/operators';
+
 import {Task} from './../models/task.model';
 import {TaskArrayService} from './../services/task-array.service';
 
@@ -9,11 +13,21 @@ import {TaskArrayService} from './../services/task-array.service';
 export class TaskFormComponent implements OnInit {
   task: Task;
 
-  constructor(private taskArrayService: TaskArrayService) {
+  constructor(private taskArrayService: TaskArrayService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.task = new Task(null, '', null, null);
+
+    // it is not necessary to save subscription to route.paramMap
+    // it handles automatically
+    this.route.paramMap
+      .pipe(
+        switchMap((params: Params) => this.taskArrayService.getTask(+params.get('id'))))
+      .subscribe(
+        task => this.task = {...task},
+        err => console.log(err)
+      );
   }
 
   saveTask() {

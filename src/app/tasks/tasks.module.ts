@@ -10,7 +10,7 @@ import {TasksRoutingModule} from "./tasks.routing.module";
     FormsModule,
     TasksRoutingModule
   ],
-  declarations: [TaskListComponent, TaskComponent],
+  declarations: [TaskListComponent, TaskComponent, TaskFormComponent],
   providers: [TaskArrayService]
 })
 export class TasksModule { }
