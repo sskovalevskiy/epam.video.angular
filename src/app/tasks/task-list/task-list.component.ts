@@ -1,6 +1,7 @@
 import {TaskArrayService} from "../services/task-array.service";
 import {Component, OnInit} from "@angular/core";
 import {Task} from './../models/task.model';
+import {Router} from "@angular/router";
 
 @Component({
   templateUrl: './task-list.component.html',
@@ -9,7 +10,7 @@ import {Task} from './../models/task.model';
 export class TaskListComponent implements OnInit {
   tasks: Array<Task>;
 
-  constructor(private taskArrayService: TaskArrayService) {
+  constructor(private router: Router, private taskArrayService: TaskArrayService) {
   }
 
   ngOnInit() {
@@ -21,6 +22,8 @@ export class TaskListComponent implements OnInit {
   }
 
   editTask(task: Task): void {
+    const link = ['/edit', task.id];
+    this.router.navigate(link);
   }
 
   private async getTasks() {
