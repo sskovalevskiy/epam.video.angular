@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import { UserArrayService } from './services/user-array.service';
 
 @NgModule({
   imports: [
@@ -8,7 +9,7 @@ import {CommonModule} from '@angular/common';
     FormsModule,
   ],
   declarations: [],
-  providers: []
+  providers: [UserArrayService]
 })
 export class UsersModule {
 }
