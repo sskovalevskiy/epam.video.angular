@@ -34,8 +34,7 @@
       <div class="col-md-2">
         <button class="btn btn-success"
                 *ngIf="!messagesService.isDisplayed"
-                [routerLink]="[{outlets: {popup: ['messages']}}]">
-          Show Messages
+                (click)="displayMessages()">Show Messages
         </button>
         <router-outlet name="popup"></router-outlet>
       </div>
